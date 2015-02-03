@@ -2,6 +2,7 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
+import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -56,6 +57,10 @@ public class PersonOverviewController
 
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+
+        // Listen for selection changes and show the person details when changed.
+        personTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     public void setMainApp(MainApp mainApp)
@@ -64,5 +69,28 @@ public class PersonOverviewController
 
         //add obervable list data to the table
         personTable.setItems(mainApp.getPersonData());
+    }
+
+    private void showPersonDetails(Person person)
+    {
+        if(person != null)
+        {
+            //fill the labels with info from the person object.
+            firstNameLabel.setText(person.getFirstName());
+            lastNameLabel.setText(person.getLastName());
+            streetLabel.setText(person.getStreet());
+            cityLabel.setText(person.getCity());
+            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+        } 
+        else
+        {
+            firstNameLabel.setText("");
+            lastNameColumn.setText("");
+            streetLabel.setText("");
+            cityLabel.setText("");
+            postalCodeLabel.setText("");
+            birthdayLabel.setText("");
+        } 
     }
 }
