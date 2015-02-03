@@ -5,8 +5,7 @@ import ch.makery.address.model.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import java.awt.*;
+import javafx.scene.text.Text;
 
 /**
  * by j.meier
@@ -23,17 +22,17 @@ public class PersonOverviewController
     private TableColumn<Person, String> lastNameColumn;
 
     @FXML
-    private Label firstNameLabel;
+    private Text firstNameLabel;
     @FXML
-    private Label lastNameLabel;
+    private Text lastNameLabel;
     @FXML
-    private Label streetLabel;
+    private Text streetLabel;
     @FXML
-    private Label cityLabel;
+    private Text cityLabel;
     @FXML
-    private Label postalCodeLabel;
+    private Text postalCodeLabel;
     @FXML
-    private Label birthdayLabel;
+    private Text birthdayLabel;
 
     //reference to the main application
     private MainApp mainApp;
