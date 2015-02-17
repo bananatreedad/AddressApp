@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
+
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.PersonOverviewController">
    <children>
       <SplitPane dividerPositions="0.3896321070234114" layoutX="137.0" layoutY="49.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -56,9 +57,9 @@
                   </GridPane>
                   <HBox layoutX="194.0" layoutY="266.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
-                        <Button layoutX="168.0" layoutY="261.0" mnemonicParsing="false" text="New..." />
-                        <Button layoutX="228.0" layoutY="261.0" mnemonicParsing="false" text="Edit..." />
-                        <Button layoutX="297.0" layoutY="260.0" mnemonicParsing="false" text="Delete" />
+                        <Button layoutX="168.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleNewPerson" text="New..." />
+                        <Button layoutX="228.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Edit..." />
+                        <Button layoutX="297.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
                      </children>
                   </HBox>
                </children>
