@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -51,6 +52,8 @@ public class MainApp extends Application
         this.stage = primaryStage;
         this.stage.setTitle("AddressApp");
 
+        this.stage.getIcons().add(new Image("file:resources/images/pic.png"));
+        
         initRootLayout();
 
         showPersonOverview();
