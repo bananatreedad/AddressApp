@@ -90,7 +90,7 @@ public class PersonOverviewController
         } else
         {
             firstNameLabel.setText("");
-            lastNameColumn.setText("");
+            lastNameLabel.setText("");
             streetLabel.setText("");
             cityLabel.setText("");
             postalCodeLabel.setText("");
