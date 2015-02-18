@@ -12,8 +12,7 @@ import org.controlsfx.dialog.Dialogs;
  * on 17.02.2015
  * All rights reserved.
  */
-public class PersonEditDialogController
-{
+public class PersonEditDialogController {
     @FXML
     private TextField firstNameField;
     @FXML
@@ -36,8 +35,7 @@ public class PersonEditDialogController
      * after the fxml file has been loaded.
      */
     @FXML
-    private void initialize()
-    {
+    private void initialize() {
     }
 
     /**
@@ -45,8 +43,7 @@ public class PersonEditDialogController
      *
      * @param dialogStage
      */
-    public void setDialogStage(Stage dialogStage)
-    {
+    public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
@@ -55,8 +52,7 @@ public class PersonEditDialogController
      *
      * @param person
      */
-    public void setPerson(Person person)
-    {
+    public void setPerson(Person person) {
         this.person = person;
 
         firstNameField.setText(person.getFirstName());
@@ -73,8 +69,7 @@ public class PersonEditDialogController
      *
      * @return
      */
-    public boolean isOkClicked()
-    {
+    public boolean isOkClicked() {
         return okClicked;
     }
 
@@ -82,10 +77,8 @@ public class PersonEditDialogController
      * Called when the user clicks ok.
      */
     @FXML
-    private void handleOk()
-    {
-        if (isInputValid())
-        {
+    private void handleOk() {
+        if (isInputValid()) {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
             person.setStreet(streetField.getText());
@@ -102,8 +95,7 @@ public class PersonEditDialogController
      * Called when the user clicks cancel.
      */
     @FXML
-    private void handleCancel()
-    {
+    private void handleCancel() {
         dialogStage.close();
     }
 
@@ -112,59 +104,45 @@ public class PersonEditDialogController
      *
      * @return true if the input is valid
      */
-    private boolean isInputValid()
-    {
+    private boolean isInputValid() {
         String errorMessage = "";
 
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0)
-        {
+        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
             errorMessage += "No valid first name!\n";
         }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0)
-        {
+        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
             errorMessage += "No valid last name!\n";
         }
-        if (streetField.getText() == null || streetField.getText().length() == 0)
-        {
+        if (streetField.getText() == null || streetField.getText().length() == 0) {
             errorMessage += "No valid street!\n";
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0)
-        {
+        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n";
-        } else
-        {
+        } else {
             // try to parse the postal code into an int.
-            try
-            {
+            try {
                 Integer.parseInt(postalCodeField.getText());
-            } catch (NumberFormatException e)
-            {
+            } catch (NumberFormatException e) {
                 errorMessage += "No valid postal code (must be an integer)!\n";
             }
         }
 
-        if (cityField.getText() == null || cityField.getText().length() == 0)
-        {
+        if (cityField.getText() == null || cityField.getText().length() == 0) {
             errorMessage += "No valid city!\n";
         }
 
-        if (birthdayField.getText() == null || birthdayField.getText().length() == 0)
-        {
+        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
             errorMessage += "No valid birthday!\n";
-        } else
-        {
-            if (!DateUtil.validDate(birthdayField.getText()))
-            {
+        } else {
+            if (!DateUtil.validDate(birthdayField.getText())) {
                 errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
             }
         }
 
-        if (errorMessage.length() == 0)
-        {
+        if (errorMessage.length() == 0) {
             return true;
-        } else
-        {
+        } else {
             // Show the error message.
             Dialogs.create()
                     .title("Invalid Fields")

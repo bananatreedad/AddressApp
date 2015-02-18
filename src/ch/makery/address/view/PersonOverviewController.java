@@ -14,8 +14,7 @@ import org.controlsfx.dialog.Dialogs;
  * on 06.01.2015
  * All rights reserved.
  */
-public class PersonOverviewController
-{
+public class PersonOverviewController {
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -43,8 +42,7 @@ public class PersonOverviewController
      * constructor.
      * is called before the initialise() method.
      */
-    public PersonOverviewController()
-    {
+    public PersonOverviewController() {
     }
 
 
@@ -53,8 +51,7 @@ public class PersonOverviewController
      * after the fxml file has been loaded.
      */
     @FXML
-    private void initialize()
-    {
+    private void initialize() {
         //Initialize the person table with the two columns.
 
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
@@ -68,18 +65,15 @@ public class PersonOverviewController
 
     }
 
-    public void setMainApp(MainApp mainApp)
-    {
+    public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
         //add obervable list data to the table
         personTable.setItems(mainApp.getPersonData());
     }
 
-    private void showPersonDetails(Person person)
-    {
-        if (person != null)
-        {
+    private void showPersonDetails(Person person) {
+        if (person != null) {
             //fill the labels with info from the person object.
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
@@ -87,8 +81,7 @@ public class PersonOverviewController
             cityLabel.setText(person.getCity());
             postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
-        } else
-        {
+        } else {
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -102,15 +95,12 @@ public class PersonOverviewController
      * Called when the user clicks on the delete button.
      */
     @FXML
-    private void handleDeletePerson()
-    {
+    private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
 
-        if (selectedIndex >= 0)
-        {
+        if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
-        } else
-        {
+        } else {
             showPersonDetails(null);
             //Nothing selected
             Dialogs.create()
@@ -126,12 +116,10 @@ public class PersonOverviewController
      * details for a new person.
      */
     @FXML
-    private void handleNewPerson()
-    {
+    private void handleNewPerson() {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
-        if (okClicked)
-        {
+        if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
         }
     }
@@ -141,19 +129,15 @@ public class PersonOverviewController
      * details for the selected person.
      */
     @FXML
-    private void handleEditPerson()
-    {
+    private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
-        if (selectedPerson != null)
-        {
+        if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
-            if (okClicked)
-            {
+            if (okClicked) {
                 showPersonDetails(selectedPerson);
             }
 
-        } else
-        {
+        } else {
             // Nothing selected.
             Dialogs.create()
                     .title("No Selection")
